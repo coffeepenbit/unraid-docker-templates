@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<Container version="2">
+  <Name>vault</Name>
+  <Repository>vault</Repository>
+  <Registry>https://hub.docker.com/_/vault</Registry>
+  <Network>bridge</Network>
+  <MyIP/>
+  <Shell>sh</Shell>
+  <Privileged>false</Privileged>
+  <Support></Support>
+  <Project>https://github.com/hashicorp/docker-vault</Project>
+  <Overview>Vault is a tool for securely accessing secrets. A secret is anything that you want to tightly control access to, such as API keys, passwords, certificates, and more. Vault provides a unified interface to any secret, while providing tight access control and recording a detailed audit log. For more information, please see: https://github.com/hashicorp/vault</Overview>
+  <Category>Security:</Category>
+  <WebUI>http://[IP]:[PORT:8200]/ui</WebUI>
+  <TemplateURL>https://raw.githubusercontent.com/coffeepenbit/unraid-templates/main/templates/vault.xml</TemplateURL>
+  <Icon>https://raw.githubusercontent.com/coffeepenbit/unraid-templates/main/templates/icons/vault_200x200.png</Icon>
+  <ExtraParams>--cap-add=IPC_LOCK vault server</ExtraParams>
+  <PostArgs/>
+  <CPUset/>
+  <DateInstalled></DateInstalled>
+  <DonateText/>
+  <DonateLink/>
+  <Requires/>
+  <Config Name="file" Target="/vault/file" Default="" Mode="rw" Description="" Type="Path" Display="always" Required="true" Mask="false">/mnt/user/appdata/vault/file/</Config>
+  <Config Name="logs" Target="/vault/logs" Default="" Mode="rw" Description="" Type="Path" Display="always" Required="false" Mask="false">/mnt/user/appdata/vault/logs/</Config>
+  <Config Name="Vault UI/API" Target="8200" Default="" Mode="tcp" Description="" Type="Port" Display="always" Required="true" Mask="false">8200</Config>
+  <Config Name="VAULT_LOCAL_CONFIG" Target="VAULT_LOCAL_CONFIG" Default="" Mode="" Description="Vault  config, e.g. backend, listener, ui" Type="Variable" Display="always" Required="true" Mask="false">{"backend": {"file": {"path": "/vault/file"}},"listener": {"tcp": {"address": "0.0.0.0:8200", "tls_disable": 1}}, "ui": true}</Config>
+</Container>
